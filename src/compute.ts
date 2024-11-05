@@ -11,13 +11,17 @@ function framepoints(frame: Frame | LastFrame): number {
 }
 
 function isStrike(frame: Frame | LastFrame): boolean {
-    throw new Error("Not yet implemented"); // TODO
+    return frame[0] === 10 && frame.length >= 2;
 }
 
 function isSpare(frame: Frame | LastFrame): boolean {
-    throw new Error("Not yet implemented"); // TODO
+    return frame.length === 2 && frame[0] + frame[1] === 10 && frame[0] !== 10;
+}
+
+function isDouble(frame: Frame | LastFrame, nextFrame: Frame | LastFrame): boolean {
+    return isStrike(frame) && isStrike(nextFrame);
 }
 
 function frameSum(frame: Frame | LastFrame): number {
-    throw new Error("Not yet implemented"); // TODO
+    return frame.reduce((a, b) => a + b, 0);
 }
