@@ -44,7 +44,7 @@ function framepoints(frame: Frame | LastFrame): number {
 
 function spareBonus(frame: Frame | LastFrame, nextFrame: Frame | LastFrame): number {
     if (isSpare(frame) && nextFrame) {
-        return nextFrame[0];
+        return frameSum(frame) + nextFrame[0];
     }
     return 0;
 }

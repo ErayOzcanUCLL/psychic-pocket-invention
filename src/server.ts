@@ -10,7 +10,6 @@ app.post("/compute", (request, response) => {
     try {
         const game = request.body.game;
 
-// function that checks if 
         function isValidGame(game: any): game is Game {
             //check if its an array and has 10 frames
             if (!Array.isArray(game) || game.length !== 10) return false;
