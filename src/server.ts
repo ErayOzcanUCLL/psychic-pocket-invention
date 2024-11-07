@@ -37,5 +37,5 @@ app.post("/compute", (request, response) => {
         console.error(error);
         return response.status(500).json({error: "Internal Server Error"});
     }
-    
+
 });

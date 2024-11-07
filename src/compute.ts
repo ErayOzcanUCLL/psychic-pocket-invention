@@ -48,6 +48,7 @@ function spareBonus(frame: Frame | LastFrame, nextFrame: Frame | LastFrame): num
     }
     return 0;
 }
+
 //bonus for strikes, double and turkey
 function strikeBonus(game: Game, index: number, frame: Frame | LastFrame): number {
     const nextFrame = game[index + 1];
@@ -58,11 +59,11 @@ function strikeBonus(game: Game, index: number, frame: Frame | LastFrame): numbe
     if (nextFrame && nextNextFrame && nextNextNextFrame && isFourBagger(frame, nextFrame, nextNextFrame, nextNextNextFrame)) {
         return 40;
     } else if (nextFrame && nextNextFrame && isTurkey(frame, nextFrame, nextNextFrame)) {
-        return 30; 
+        return 30;
     } else if (nextFrame && isDouble(frame, nextFrame)) {
-        return 20 + (nextNextFrame ? nextNextFrame[0] : 0); 
+        return 20 + (nextNextFrame ? nextNextFrame[0] : 0);
     } else if (isStrike(frame) && nextFrame) {
-        return 10 + frameSum(nextFrame); 
+        return 10 + frameSum(nextFrame);
     }
     return 0;
 }
@@ -70,7 +71,7 @@ function strikeBonus(game: Game, index: number, frame: Frame | LastFrame): numbe
 //endregion
 //region isX
 function isStrike(frame: Frame | LastFrame): boolean {
-    return frame && frame[0] === 10 
+    return frame && frame[0] === 10
 }
 
 function isSpare(frame: Frame | LastFrame): boolean {
@@ -88,4 +89,5 @@ function isTurkey(frame: Frame | LastFrame, nextFrame: Frame | LastFrame, nextNe
 function isFourBagger(frame: Frame | LastFrame, nextFrame: Frame | LastFrame, nextNextFrame: Frame | LastFrame, nextNextNextFrame: Frame | LastFrame): boolean {
     return frame && nextFrame && nextNextFrame && nextNextNextFrame && isStrike(frame) && isStrike(nextFrame) && isStrike(nextNextFrame) && isStrike(nextNextNextFrame);
 }
+
 //endregion
